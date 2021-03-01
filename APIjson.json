@@ -1,0 +1,55 @@
+{
+	"success": true,
+	"code": "0",
+	"msg": "",
+	"content": {
+		"result": {
+			"pageCond": {
+				"pageSize": 10,
+				"pageIndex": 1,
+				"shdCount": true,
+				"count": 1
+			},
+			"list": [
+				{
+					"id": 8,
+					"mtenantId": "101397",
+					"asDealCode": "",
+					"dealCode": "1210958532955",
+					"billNum": "1210958532955-1",
+					"saleFlag": 0,
+					"createTime": 1596792963000,
+					"deptCode": "8888",
+					"deptName": "1008986830",
+					"recvMobile": "",
+					"recvName": "8888",
+					"buyerId": "",
+					"dealTotalFee": 0,
+					"dealTotalPayment": 0,
+					"dealPaySussTime": 1611716769000,
+					"dealPayType": 4,
+					"details": [
+						{
+							"id": 14,
+							"mtenantId": "101397",
+							"dealCode": "1210958532955",
+							"asDealCode": "",
+							"billNum": "1210958532955-1",
+							"goodsCode": "3567227",
+							"goodsName": "550101020011",
+							"barCode": "水果篮子香蕉",
+							"remark": "1",
+							"amount": 10000,
+							"insideId": 1,
+							"createTime": 1611716853000,
+							"saleFlag": 0,
+							"tradePrice": 1,
+							"saleMoney": 1,
+							"payPrice": null
+						}
+					]
+				}
+			]
+		}
+	}
+}
