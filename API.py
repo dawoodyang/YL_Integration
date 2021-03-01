@@ -5,7 +5,7 @@ import hashlib
 import time
 import datetime
 import cx_Oracle as cx
-
+ 
 class webservice:
 #[Class Setup info]---------------------------------------------------------------------------------------------------[+]     
     url_token       = 'http://testpicksys.retailo2o.com/erpExternal/api/comm/getToken.do?_platform_num='
