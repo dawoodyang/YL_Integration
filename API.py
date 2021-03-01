@@ -5,7 +5,9 @@ import hashlib
 import time
 import datetime
 import cx_Oracle as cx
-import random
+import random 
+import xml.etree.ElementTree as ET  # XML Create
+import logging    #Log object
 
 
 class webservice:
