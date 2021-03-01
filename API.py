@@ -50,6 +50,8 @@ class webservice:
          print('End TimeStamp   = '+self.t_EndDateStamp)
          print('Start Date      = '+self.t_startDate)
          print('End Date        = '+self.t_endDate)
+#---[Oracle]--------------------------------------------------------[Check Part]------------------------------------------[+]
+
 
     def itemCheck(self, p_itemcode):
 
@@ -78,6 +80,9 @@ class webservice:
 
         return result
 
+
+#---[Oracle]--------------------------------------------------------[Check Part]------------------------------------------[-]
+
     def getsid(self):
         sid = '16'
         x = [random.randint(10, 18) for i in range(8)]
@@ -85,12 +90,26 @@ class webservice:
             sid = sid+str(i)
         return sid
 
+    def TimeStampToDateTime(self,p_TimeStamp,p_type):
+         p_TimeStamp = p_TimeStamp[0:10]
+         timeStamp = int(p_TimeStamp)
+  
+         timeArray = time.localtime(timeStamp)
+         if p_type =='Create':
+            otherStyleTime = time.strftime("%Y-%m-%dT%H:%M:%S", timeArray)
+         if p_type =='Modify':
+            otherStyleTime = time.strftime("%Y-%m-%dT%H:%M:%S+08:00", timeArray)
+
+         return otherStyleTime 
+
+
     def gettoken(self):
          get_respons = requests.get(self.url_token+self.t_platform_num)
          self.t_token = json.loads(get_respons.text).get(
              'content').get('result')
          print('---------   Get Token   ---------')
          print('Token = '+self.t_token)
+
 
     def getorder(self):
          # ----- Http Headers ----------- +
