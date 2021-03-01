@@ -25,7 +25,7 @@ class webservice:
     key_value['sign']          = ''
 
     CreateDOCList =[] #save Doc_No in check time,if document can input
-
+    errorlist     =[] #test
     dns = cx.makedsn('192.168.10.27','1521','rproods') # setup Oracle info
     connection = cx.connect('reportuser','report',dns) # connection to Oracle
     cur = connection.cursor()    # Create Cursor for select run
