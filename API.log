@@ -1,0 +1,54 @@
+2021-03-02 13:32:46,072 - INFO - -                                                               -
+2021-03-02 13:32:46,072 - INFO - API Program Start Datetime:21-03-02 13:3246
+2021-03-02 13:32:46,733 - INFO - 21-03-02 13:3246  |Error|-------->[Item Not Found] Document No:1216292558545Barcode:2900000000049
+2021-03-02 13:33:23,596 - INFO - -                                                               -
+2021-03-02 13:33:23,596 - INFO - API Program Start Datetime:21-03-02 13:3323
+2021-03-02 13:33:24,137 - INFO - 21-03-02 13:3324  |Error|-------->[Item Not Found]  Document No:1216292558545   Barcode:2900000000049
+2021-03-02 13:36:53,971 - INFO - -                                                               -
+2021-03-02 13:36:53,971 - INFO - API Program Start Datetime:21-03-02 13:3653
+2021-03-02 13:40:12,367 - INFO - -                                                               -
+2021-03-02 13:40:12,368 - INFO - API Program Start Datetime:21-03-02 13:4012
+2021-03-02 13:40:12,962 - INFO - 21-03-02 13:40:12  |Error|-------->[Item Not Found]  Document No:1216292558545   Barcode:2900000000049
+2021-03-02 13:47:09,887 - INFO - -                                                               -
+2021-03-02 13:47:09,887 - INFO - API Program Start Datetime:     [  21-03-02 13:47:09  ]
+2021-03-02 13:48:10,138 - INFO - -                                                               -
+2021-03-02 13:48:10,138 - INFO - API Program Start Datetime:     [  21-03-02 13:48:10  ]
+2021-03-02 13:48:32,004 - INFO - -                                                               -
+2021-03-02 13:48:32,005 - INFO - API Program Start Datetime:     [  21-03-02 13:48:32  ]
+2021-03-02 13:50:44,695 - INFO - -                                                               -
+2021-03-02 13:50:44,696 - INFO - API Program Start Datetime:     [  21-03-02 13:50:44  ]
+2021-03-02 13:51:28,286 - INFO - -                                                               -
+2021-03-02 13:51:28,287 - INFO - API Program Start Datetime:     [  21-03-02 13:51:28  ]
+2021-03-02 13:52:43,805 - INFO - -                                                               -
+2021-03-02 13:52:43,806 - INFO - API Program Start Datetime:     [  21-03-02 13:52:43  ]
+2021-03-02 13:58:07,752 - INFO - -                                                               -
+2021-03-02 13:58:07,752 - INFO - API Program Start Datetime:     [  21-03-02 13:58:07  ]
+2021-03-02 13:58:27,920 - INFO - -                                                               -
+2021-03-02 13:58:27,920 - INFO - API Program Start Datetime:     [  21-03-02 13:58:27  ]
+2021-03-02 13:58:35,271 - INFO - -                                                               -
+2021-03-02 13:58:35,271 - INFO - API Program Start Datetime:     [  21-03-02 13:58:35  ]
+2021-03-02 14:01:29,716 - INFO - -                                                               -
+2021-03-02 14:01:29,717 - INFO - API Program Start Datetime:     [  21-03-02 14:01:29  ]
+2021-03-02 14:01:44,116 - INFO - -                                                               -
+2021-03-02 14:01:44,116 - INFO - API Program Start Datetime:     [  21-03-02 14:01:44  ]
+2021-03-02 15:01:23,048 - INFO - -                                                               -
+2021-03-02 15:01:23,049 - INFO - API Program Start Datetime:     [  21-03-02 15:01:23  ]
+2021-03-02 15:02:00,229 - INFO - -                                                               -
+2021-03-02 15:02:00,230 - INFO - API Program Start Datetime:     [  21-03-02 15:02:00  ]
+2021-03-02 15:02:16,320 - INFO - -                                                               -
+2021-03-02 15:02:16,320 - INFO - API Program Start Datetime:     [  21-03-02 15:02:16  ]
+2021-03-02 15:02:17,925 - INFO - 21-03-02 15:02:17  |Note|-------->[Create  XML Document]
+2021-03-02 15:18:53,623 - INFO - -                                                               -
+2021-03-02 15:18:53,623 - INFO - API Program Start Datetime:     [  21-03-02 15:18:53  ]
+2021-03-02 15:18:55,368 - INFO - 21-03-02 15:18:55  |Note|-------->[Create  XML Document]
+2021-03-02 15:26:51,751 - INFO - -                                                               -
+2021-03-02 15:26:51,752 - INFO - API Program Start Datetime:     [  21-03-02 15:26:51  ]
+2021-03-02 15:41:18,315 - INFO - -                                                               -
+2021-03-02 15:41:18,316 - INFO - API Program Start Datetime:     [  21-03-02 15:41:18  ]
+2021-03-02 15:42:17,040 - INFO - -                                                               -
+2021-03-02 15:42:17,040 - INFO - API Program Start Datetime:     [  21-03-02 15:42:17  ]
+2021-03-02 15:42:47,033 - INFO - -                                                               -
+2021-03-02 15:42:47,034 - INFO - API Program Start Datetime:     [  21-03-02 15:42:47  ]
+2021-03-02 15:42:47,599 - INFO - 21-03-02 15:42:47  |Error|-------->   Customer Not Exist 1010073508
+2021-03-02 15:43:25,312 - INFO - -                                                               -
+2021-03-02 15:43:25,312 - INFO - API Program Start Datetime:     [  21-03-02 15:43:25  ]
