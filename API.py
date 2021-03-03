@@ -128,9 +128,11 @@ class webservice:
         return result
 
     def customer_check(self, p_custno):
-
-        self.cur.execute(
-            "select cust_sid from cms.customer where info1='"+p_custno+"'")
+             
+        sql="select t.cust_sid,t.cust_id,t.store_no,t.first_name,t.last_name,t.info1,t.info2,to_char(t.modified_date,'YYYY-MM-DD"'"T"'"HH24:MI:SSTZH:TZM'),"
+        sql=sql+"(select max(phone1)from cms.cust_address a where t.cust_sid=a.cust_sid ) from cms.customer t where t.info1='"+p_custno+"'"
+        print(sql)
+        self.cur.execute(sql)
         result = self.cur.fetchone()
         return result
 
@@ -259,7 +261,9 @@ class webservice:
                 print('------------------ Header ---------------------')
                 # print(docList)
                 print('[Header]-------->  DocumentNo:'+docList['dealCode']+'   Date:'+str(docList['createTime'])+'  SaleFlag:'+str(docList['saleFlag']
+
                                                                                                                                    )+'  RecvName:'+docList['recvName']+'  BuyerId:'+str(docList['buyerId'])+' TotalPayment:'+str(docList['dealTotalFee']))
+                # ---------------   Check Invoice ------------------------------------
                 str_checkinvc = self.invcCheck(docList['dealCode'])
                 if str_checkinvc == None:
                     print('Document Is New')
@@ -268,6 +272,7 @@ class webservice:
                     logging.info(self.getCurrDatetime(
                     )+'  |Note|-------->   Document already exist '+str(str_checkinvc))  # Append Log
 
+                # ---------------   Check Customer ------------------------------------
                 str_checkcust = self.customer_check(str(docList['buyerId']))
                 if str_checkcust == None:
                     print('Customer Not Exist')
@@ -275,7 +280,7 @@ class webservice:
                     logging.info(self.getCurrDatetime(
                     )+'  |Error|-------->   Customer Not Exist '+str(docList['buyerId']))  # Append Log
                 else:
-                    print('Cust is Found ')
+                    print('Cust is Found Name:'+str_checkcust[4]+'  Modify date:'+str(str_checkcust[7]))
 
                 # ------------------------Header-------------------------[+]
 
@@ -285,7 +290,7 @@ class webservice:
 
                         print('[Lines]--------->   DocumentNo:'+docList['dealCode']+'   ItemName:'+docDetail['goodsName']+'  Barcode:' +
                               docDetail['barCode']+'   Quantity:'+str(docDetail['amount'])+'  Price:' + str(docDetail['tradePrice']))
-                    # ------ Check Item ---------------------------------[+]
+                    # ------------- Check Item ---------------------------------[+]
                         str_checkitem = self.itemCheck(docDetail['barCode'])
                         if str_checkitem != None:
                             if self.test_type == 'test':  # ----test-------
@@ -299,6 +304,8 @@ class webservice:
                             documentError = documentError + 1
                             logging.info(self.getCurrDatetime(
                             )+'  |Error|-------->[Item Not Found]  Document No:'+docList['dealCode']+'   Barcode:'+docDetail['barCode'])  # Append Log
+                       # ---------------- Check Item ---------------------------------[-]
+                       #
                        # ------- Check if document not error then insert to created list -------[+]
                     if documentError == 0:
                         self.CreateDOCList.append(docList['dealCode'])
@@ -306,8 +313,6 @@ class webservice:
                             # ----test-------
                             print(docList['dealCode']+' will Created')
                        # -----------------------------------------------------------------------[-]
-
-                       # ------ Check Item ---------------------------------[-]
 
         # -------Loop List -----------------------(-)
 # [JSON-Check Document / Customer / Items]-----------------------------------------------------------------------------------------------------------------------[-]
