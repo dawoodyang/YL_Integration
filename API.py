@@ -37,6 +37,7 @@ class webservice:
     CustInfo = []
     ItemInfo = []
 
+
     dns = cx.makedsn('192.168.10.27', '1521', 'rproods')  # setup Oracle info
     connection = cx.connect('reportuser', 'report',
                             dns)  # connection to Oracle
@@ -102,7 +103,8 @@ class webservice:
     def itemCheck(self, p_itemcode):
 
         self.cur.execute(
-            "select item_sid,local_upc,description2,text3 from cms.INVN_SBS where alu="+p_itemcode)
+            "select t.item_sid,p.price,t.local_upc,t.alu,t.style_sid,t.dcs_code,t.vend_code,t.description1,t.description2,t.description3,t.description4,t.siz "+
+            "from  cms.invn_sbs t ,cms.invn_sbs_price p where t.item_sid=p.item_sid(+) and p.price_lvl(+)=1 and t.alu="+p_itemcode)
         getstr = self.cur.fetchone()
         if getstr != None:
             result = list(getstr)
@@ -129,9 +131,8 @@ class webservice:
 
     def customer_check(self, p_custno):
              
-        sql="select t.cust_sid,t.cust_id,t.store_no,t.first_name,t.last_name,t.info1,t.info2,to_char(t.modified_date,'YYYY-MM-DD"'"T"'"HH24:MI:SSTZH:TZM'),"
+        sql="select t.cust_sid,t.cust_id,t.store_no,t.first_name,t.last_name,t.info1,nvl(t.info2,''),to_char(t.modified_date,'YYYY-MM-DD"'"T"'"HH24:MI:SSTZH:TZM'),"
         sql=sql+"(select max(phone1)from cms.cust_address a where t.cust_sid=a.cust_sid ) from cms.customer t where t.info1='"+p_custno+"'"
-        print(sql)
         self.cur.execute(sql)
         result = self.cur.fetchone()
         return result
@@ -149,8 +150,8 @@ class webservice:
         invc_check = ''
         sidcount = 0
         while (invc_check != None):
-            sid = '16'
-            x = [random.randint(10, 18) for i in range(8)]
+            sid = '160007'
+            x = [random.randint(10, 18) for i in range(6)]
             for i in x:
                 sid = sid+str(i)
             sidcount = sidcount + 1
@@ -320,25 +321,113 @@ class webservice:
 
 #                                                             [------]                                                                                           [-]
 
-
+        
 # ---------[     Create XML part       ]----------------------------------------------------------------------------------------------------------------------------------------[+]
-        if str(JsonStr['success']) == 'True' and str(JsonStr['content']['result']['pageCond']['count']) > '1':
+        if str(JsonStr['success']) == 'True' and JsonStr['content']['result']['pageCond']['count']>= 1:
+            print('Start Create XML')
             self.t_invc_no = self.getInvcNo  # get Invc_No
             logging.info(self.getCurrDatetime() +
                          '  |Note|-------->[Create  XML Document]')  # Append Log
-            """ xml_doc = ET.Element('DOCUMENT')
+            xml_doc = ET.Element('DOCUMENT')
             logging.info("Create Document Tree")
             invoices = ET.SubElement(xml_doc,'INVOICES')
-            """
+            self.t_invc_no = self.getInvcNo()
             for docList in JsonStr['content']['result']['list']:
 
                 if docList['dealCode'] in self.CreateDOCList:
+                    #----------------------------------Document Loop ------------------------------------------------------------------------------------------------>>
                     print(docList['dealCode']+'    :'+'Go to Created XML')
-
                     getsidstr = self.getsid()  # ---------    Get INVC_SID
                     if self.test_type == 'test':
                         print('Get Invoice SID:'+getsidstr)
+                    self.CustInfo = self.customer_check(str(docList['buyerId'])) # get customer info
 
+                    if docList['saleFlag']=='0':
+                       invc_type='0'
+                    else:
+                       invc_type='2'
+
+                    #---------------------------------  Invoice Header -------------------------------------------------------------------------------
+                    logging.info("Create INVCOICES Tree ")
+                    invoice  = ET.SubElement(invoices,'INVOICE',INVC_SID = getsidstr,
+                         sbs_no="1",store_no=self.t_store_no,invc_no=str(self.t_invc_no),invc_type=invc_type ,hisec_type="0" ,status="2" ,proc_status="0" ,cust_sid=str(self.CustInfo[0]) ,addr_no="1" ,shipto_cust_sid=str(self.CustInfo[0]),
+                         shipto_addr_no="1" ,station="" ,workstation="1" ,orig_store_no=str(self.t_store_no) ,orig_station="" ,use_vat="1" ,vat_options="0" ,so_no="" ,so_sid="" ,cust_po_no="" ,note="",
+                         disc_perc="" ,disc_amt="" ,disc_perc_spread="" ,over_tax_perc="" ,over_tax_perc2="" ,tax_reb_perc="" ,tax_reb_amt="" ,rounding_offset="" ,
+                         created_date=self.TimeStampToDateTime(str(docList['createTime']),'Create') ,modified_date=self.TimeStampToDateTime(str(docList['createTime']),'Modify') ,post_date=self.TimeStampToDateTime(str(docList['createTime']),'Create') ,tracking_no=str(docList['dealCode']) ,ref_invc_sid="" ,
+                         audited="0" ,cms_post_date=self.TimeStampToDateTime(str(docList['createTime']),'Create'),ws_seq_no="" ,cust_fld="" ,held="0" ,drawer_no=str(self.t_store_no) ,controller="8888" ,orig_controller="8888" ,elapsed_time="",
+                         till_name="" ,activity_perc="" ,activity_perc2="" ,activity_perc3="" ,activity_perc4="" ,activity_perc5="" ,eft_invc_no="" ,detax="0" ,doc_ref_no="" ,fiscal_doc_id="" ,
+                         subloc_code="" ,subloc_id="" ,ship_perc="" ,trans_disc_amt="" ,empl_sbs_no="1" ,empl_name="10005751" ,tax_area_name="CH_VAT" ,tax_area2_name="" ,ref_invc_no="" ,
+                         ref_invc_created_date="" ,createdby_sbs_no="1", createdby_empl_name="10005751" ,modifiedby_sbs_no="1" ,modifiedby_empl_name="10005751" ,clerk_sbs_no="1" ,clerk_name="10005751" ,
+                         clerk_sbs_no2="" ,clerk_name2="" ,clerk_sbs_no3="" ,clerk_name3="", clerk_sbs_no4="", clerk_name4="", clerk_sbs_no5="" ,clerk_name5="", disbur_reason_type="" ,disbur_reason_name="",
+                         doc_reason_code="")
+                    #---------------------------------------------------------------------------------------------------------------------------------
+                        
+                    customer =  ET.SubElement(invoice,'CUSTOMER',cust_sid=str(self.CustInfo[0]),cust_id=str(self.CustInfo[1]) ,store_no=str(self.CustInfo[2]) ,station="" ,first_name=str(self.CustInfo[3]) ,last_name=str(self.CustInfo[4]),price_lvl="", detax="0" ,info1=str(self.CustInfo[5]) ,
+                          info2=str(self.CustInfo[6]) ,modified_date=str(self.CustInfo[7]),sbs_no="1" ,cms="0" ,company_name="" ,title="" ,tax_area_name="" ,shipping="0", address1="" ,
+                          address2="" ,address3="" ,address4="" ,address5="" ,address6="43" ,zip="", phone1=str(self.CustInfo[8]) ,phone2="", country_name="" ,alternate_id1="" ,alternate_id2="" )                      
+                    shiptocustomer =  ET.SubElement(invoice,'SHIPTO_CUSTOMER',cust_sid=str(self.CustInfo[0]),cust_id=str(self.CustInfo[1]) ,store_no=str(self.CustInfo[2]) ,station="" ,first_name=str(self.CustInfo[3]) ,last_name=str(self.CustInfo[4]),price_lvl="", detax="0" ,info1=str(self.CustInfo[5]) ,
+                          info2=str(self.CustInfo[6]) ,modified_date=str(self.CustInfo[7]),sbs_no="1" ,cms="0" ,company_name="" ,title="" ,tax_area_name="" ,shipping="0", address1="" ,
+                          address2="" ,address3="" ,address4="" ,address5="" ,address6="43" ,zip="", phone1=str(self.CustInfo[8]) ,phone2="", country_name="" ,alternate_id1="" ,alternate_id2="" )  
+                    INVC_SUPPLS   = ET.SubElement(invoice,'INVC_SUPPLS')
+                    INVC_COMMENTS = ET.SubElement(invoice,'INVC_COMMENTS')
+                    INVC_COMMENT  = ET.SubElement(INVC_COMMENTS,'INVC_COMMENT',comment_no="1" ,comments="快递配送")
+                    INVC_EXTRAS   = ET.SubElement(invoice,'INVC_EXTRAS')
+                    INVC_FEES     = ET.SubElement(invoice,'INVC_FEES')    
+                    INVC_FEE      = ET.SubElement(INVC_FEES,'INVC_FEE',fee_type="0", tax_perc="0", tax_incl="0", amt="0" ,fee_name="Fee")
+                    INVC_TENDERS  = ET.SubElement(invoice,'INVC_TENDERS')
+                    INVC_TENDER   = ET.SubElement(INVC_TENDERS,'INVC_TENDER',tender_type="2", tender_no="1" ,taken=str(docList['dealTotalPayment']) ,given="0" ,amt=str(docList['dealTotalPayment']),doc_no="" ,auth="" ,reference="" ,chk_company="", chk_first_name="",
+                              chk_last_name="", chk_work_phone="" ,chk_home_phone="" ,chk_state_code="" ,chk_dl="", chk_dl_exp_date="" ,chk_dob_date="", crd_exp_month="" ,crd_exp_year="" ,
+                              crd_normal_sale="", crd_contr_no="" ,crd_present="" ,crd_zip="" ,crd_proc_fee="", gft_crd_trace_no="", gft_crd_int_ref_no="" ,gft_crd_balance="", charge_net_days="",
+                              charge_disc_days="" ,charge_disc_perc="" ,pmt_date="", pmt_remark="", matched="", manual_name="" ,manual_remark="" ,transaction_id="" ,avs_code="", chk_type="" ,cashback_amt="" ,
+                              l2_result_code="", signature_map="", orig_crd_name="", tender_state="0" ,failure_msg="" ,proc_date="" ,orig_currency_name="", eftdata0="", eftdata1="" ,eftdata2="", eftdata3="" ,
+                              eftdata4="" ,eftdata5="", eftdata6="", eftdata7="" ,eftdata8="" ,eftdata9="" ,cardholder_name="", give_rate="" ,take_rate="" ,base_taken="" ,base_given="" ,cent_txn_id="" ,
+                              balance_remaining="", cent_commit_txn="", emv_aid="" ,emv_applabel="", emv_card_exp_date="", emv_cyrpto_type="", emv_cryptogram="" ,emv_pin_statement="" ,cayan_sf_id="" ,
+                              crd_name="" ,currency_name="")
+                    INVC_COUPONS  = ET.SubElement(invoice,'INVC_COUPONS')      
+
+
+                    #----------------INVC_ITEM  Detail--------------------------------------------------------------------------------------------------->>
+                    linecount =0   
+                    for docDetail in docList['details']:
+                        #----------------Line Loop---------------------------------------------------------------------------------------->>
+                        print('[Lines]--------->   DocumentNo:'+docList['dealCode']+'   ItemName:'+docDetail['goodsName']+'  Barcode:' +
+                        docDetail['barCode']+'   Quantity:'+str(docDetail['amount'])+'  Price:' + str(docDetail['tradePrice']))
+                    # ------------- Check Item ---------------------------------[+]
+                        linecount = linecount + 1
+                        lineTax = docDetail['saleMoney']*0.13
+                        str_checkitem = self.itemCheck(docDetail['barCode'])
+                        if str_checkitem != None:
+                            INVC_ITEMS    = ET.SubElement(invoice,'INVC_ITEMS')
+                            INVC_ITEM     = ET.SubElement(INVC_ITEMS,'INVC_ITEM',item_pos=str(linecount),item_sid=str(str_checkitem[0]), qty=str(docDetail['amount']) ,orig_price=str(str_checkitem[1]) ,orig_tax_amt=str(str_checkitem[1]*0.13),price=str(docDetail['tradePrice']), tax_code="0" ,tax_perc="13" ,tax_amt=str(lineTax) ,
+                              tax_code2="" ,tax_perc2="" ,tax_amt2="" ,cost="0" ,price_lvl="1" ,spif="0" ,sched_no="" ,comm_code="" ,comm_amt="" ,cust_fld="" ,scan_upc="" ,serial_no="" ,lot_number="" ,kit_flag="0" ,
+                              pkg_item_sid="", pkg_seq_no="", orig_cmpnt_item_sid="" ,detax="0" ,usr_disc_perc="0", udf_value1="", udf_value2="", udf_value3="" ,udf_value4="" ,activity_perc="100" ,activity_perc2="0",
+                              activity_perc3="0" ,activity_perc4="0",activity_perc5="0" ,comm_amt2="0" ,comm_amt3="0" ,comm_amt4="0" ,comm_amt5="0", so_sid="", so_orig_item_pos="" ,item_origin="" ,pkg_no="" ,
+                              shipto_cust_sid="" ,shipto_addr_no="" ,orig_cost="" ,item_note1="" ,item_note2="" ,item_note3="" ,item_note4="" ,item_note5="" ,item_note6="", item_note7="" ,item_note8="" ,item_note9="" ,item_note10="",
+                              promo_flag="0" ,gift_activation_code="", gift_transaction_id="" ,returned_qty="" ,ref_item_pos="", ref_invc_sid="" ,gift_add_value="0" ,ref_invc_no="" ,alt_upc="" ,alt_alu="" ,alt_cost="",
+                              alt_vend_code="" ,orig_prc_bdt="" ,prc_bdt="" ,gift_eftdata0="",gift_eftdata1="" ,gift_eftdata2="" ,gift_eftdata3="" ,gift_eftdata4="", gift_eftdata5="" ,gift_eftdata6="" ,gift_eftdata7="" ,gift_eftdata8="",
+                              gift_eftdata9="" ,subloc_code="" ,subloc_id="" ,tender_state="0" ,failure_msg="" ,proc_date="" ,cent_commit_txn="0", price_flag="0", force_orig_tax="" ,sn_qty="", sn_active="", sn_received="" ,sn_sold="" ,
+                              sn_transferred="" ,sn_so_reserved="" ,sn_returned="" ,sn_returned_to_vnd="" ,sn_adjusted="" ,tax_perc_lock="0" ,ref_store_no="", tax_area2_name="" ,empl_sbs_no="1" ,empl_name="10005751", disc_reason_name="" ,
+                              empl_sbs_no2="", empl_name2="" ,empl_sbs_no3="" ,empl_name3="" ,empl_sbs_no4="" ,empl_name4="" ,empl_sbs_no5="", empl_name5="" ,ship_method="" ,item_reason_type="" ,item_reason_name="")
+
+                            INVN_BASE_ITEM = ET.SubElement(INVC_ITEM,'INVN_BASE_ITEM',item_sid=str(str_checkitem[0]), upc=str(str_checkitem[2]), alu="", style_sid=str(str_checkitem[4]), dcs_code=str(str_checkitem[5]) ,vend_code=str(str_checkitem[6]), scale_no="" ,description1=str(str_checkitem[7]) ,
+                              description2=str(str_checkitem[8]), description3=str(str_checkitem[9]),description4=str(str_checkitem[10]), attr="", siz=str(str_checkitem[11]) ,use_qty_decimals="0" ,tax_code="0" ,flag="0", ext_flag="0" ,item_no="" ,
+                              udf3_value="" ,udf4_value="" ,udf5_value="", udf6_value="" ,aux1_value="" ,aux2_value="", aux3_value="", aux4_value="", aux5_value="", aux6_value="", aux7_value="" ,aux8_value="")                     
+                        #----------------Line Loop----------------------------------------------------------------------------------------<<
+                       
+                       
+            
+                    #------------------------------------------------------------------------------------------------------------------------------------<<
+                              
+                    #----------------end of invoice ---------------------
+                    self.t_invc_no= self.t_invc_no+1
+                    #--------------------------------------------------Document loop end---------------------------------------------------------------------------<<
+                logging.info("Format XML")
+                self.prettify(xml_doc)
+
+                tree = ET.ElementTree(xml_doc)
+                logging.info("Create XML File Tree")
+                tree.write('invoice.xml',encoding='UTF-8',xml_declaration=True)
+                logging.info("Write XML FilE")
 
 # ---------[     Create XML part       ]----------------------------------------------------------------------------------------------------------------------------------------[-]
 
