@@ -13,9 +13,13 @@ import os         # for save files
 
 class webservice:
     # [Class Setup info]---------------------------------------------------------------------------------------------------[+]
-    test_type = 'test'
-    url_token = 'http://testpicksys.retailo2o.com/erpExternal/api/comm/getToken.do?_platform_num='
-    url_getorder = 'http://testpicksys.retailo2o.com/picksysdi/api/orderOperate/getPageRetailProInfo.do'
+    test_type = ''
+    url_token = ''
+    url_getorder = ''
+    databasehost = ''
+    databaseuser = ''
+    databasepwd  = ''
+    exportpath   = ''
     t_token = ''
     t_platform_num = ''
     t_deptcode = ''
@@ -36,15 +40,27 @@ class webservice:
     errorlist = []  # test
     CustInfo = []
     ItemInfo = []
+    ConfigJson = []
+    #-------- Get Config --------------------------
+    with open("api.config",'r') as load_f:
+         ConfigJson = json.load(load_f)
 
+    url_getorder = ConfigJson['url_getorder']
+    url_token    = ConfigJson['url_token']
+    test_type    = ConfigJson['test_type']
+    databasehost = ConfigJson['databasehost']
+    databaseuser = ConfigJson['databaseuser']
+    databasepwd  = ConfigJson['databasepwd']
+    exportpath   = ConfigJson['exportpath']
+    #-------- Get Config --------------------------
 
-    dns = cx.makedsn('192.168.10.27', '1521', 'rproods')  # setup Oracle info
-    connection = cx.connect('reportuser', 'report',
+    dns = cx.makedsn(databasehost, '1521', 'rproods')  # setup Oracle info
+    connection = cx.connect(databaseuser, databasepwd,
                             dns)  # connection to Oracle
     cur = connection.cursor()    # Create Cursor for select run
     # ------------------[    Log Part     ]-------------------------------------------------[+]
     LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
-    logging.basicConfig(filename='API.log',
+    logging.basicConfig(filename='api.log',
                         level=logging.INFO, format=LOG_FORMAT)
     logging.info(
         '-                                                               -')
@@ -72,6 +88,8 @@ class webservice:
         print('End TimeStamp   = '+self.t_EndDateStamp)
         print('Start Date      = '+self.t_startDate)
         print('End Date        = '+self.t_endDate)
+       
+
 # ---[Oracle]--------------------------------------------------------[Check Part]------------------------------------------[+]
 
     def getGlobStore(self):
@@ -150,8 +168,8 @@ class webservice:
         invc_check = ''
         sidcount = 0
         while (invc_check != None):
-            sid = '160007'
-            x = [random.randint(10, 18) for i in range(6)]
+            sid = '167'
+            x = [random.randint(10, 18) for i in range(8)]
             for i in x:
                 sid = sid+str(i)
             sidcount = sidcount + 1
@@ -267,8 +285,9 @@ class webservice:
                 # ---------------   Check Invoice ------------------------------------
                 str_checkinvc = self.invcCheck(docList['dealCode'])
                 if str_checkinvc == None:
-                    print('Document Is New')
+                    print('Document Is New')                    
                 else:
+                    documentError = 1
                     print('Document already exist '+str(str_checkinvc))
                     logging.info(self.getCurrDatetime(
                     )+'  |Note|-------->   Document already exist '+str(str_checkinvc))  # Append Log
@@ -276,11 +295,11 @@ class webservice:
                 # ---------------   Check Customer ------------------------------------
                 str_checkcust = self.customer_check(str(docList['buyerId']))
                 if str_checkcust == None:
-                    print('Customer Not Exist')
-                    documentError = 1
+                    print('Customer Not Exist')  
+                    documentError = 1                 
                     logging.info(self.getCurrDatetime(
                     )+'  |Error|-------->   Customer Not Exist '+str(docList['buyerId']))  # Append Log
-                else:
+                else:                    
                     print('Cust is Found Name:'+str_checkcust[4]+'  Modify date:'+str(str_checkcust[7]))
 
                 # ------------------------Header-------------------------[+]
@@ -323,7 +342,11 @@ class webservice:
 
         
 # ---------[     Create XML part       ]----------------------------------------------------------------------------------------------------------------------------------------[+]
-        if str(JsonStr['success']) == 'True' and JsonStr['content']['result']['pageCond']['count']>= 1:
+        #if str(JsonStr['success']) == 'True' and JsonStr['content']['result']['pageCond']['count']>= 1:
+        if len(self.CreateDOCList)>=0 :
+            logging.info(self.getCurrDatetime() +
+                         '  |Note|-------->[After check,no document create]')  # Append Log            
+        else:
             print('Start Create XML')
             self.t_invc_no = self.getInvcNo  # get Invc_No
             logging.info(self.getCurrDatetime() +
@@ -426,7 +449,8 @@ class webservice:
 
                 tree = ET.ElementTree(xml_doc)
                 logging.info("Create XML File Tree")
-                tree.write('invoice.xml',encoding='UTF-8',xml_declaration=True)
+                tree.write('.\\xml\\'+str(time.strftime('%y%m%d%H%M%S'))+'INVC''.xml',encoding='UTF-8',xml_declaration=True)
+                tree.write(self.exportpath+'invoice002.xml',encoding='UTF-8',xml_declaration=True)
                 logging.info("Write XML FilE")
 
 # ---------[     Create XML part       ]----------------------------------------------------------------------------------------------------------------------------------------[-]
@@ -441,5 +465,5 @@ class webservice:
 
 # -----Run Main ----------------
 
-API = webservice('101661', '2021-02-05 00:00:00', '2021-02-05 23:59:59')
+API = webservice('101661', '2021-02-04 00:00:00', '2021-02-04 23:59:59')
 API.getorder()

@@ -1,0 +1,2 @@
+1.安装目录包含文件及文件夹
+  [log]   [XML]    api.config  API.exe
