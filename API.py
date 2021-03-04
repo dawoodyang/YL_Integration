@@ -349,7 +349,7 @@ class webservice:
 
                     #---------------------------------  Invoice Header -------------------------------------------------------------------------------
                     logging.info("Create INVCOICES Tree ")
-                    invoice  = ET.SubElement(invoices,'INVOICE',INVC_SID = getsidstr,
+                    invoice  = ET.SubElement(invoices,'INVOICE',invc_sid = getsidstr,
                          sbs_no="1",store_no=self.t_store_no,invc_no=str(self.t_invc_no),invc_type=invc_type ,hisec_type="0" ,status="2" ,proc_status="0" ,cust_sid=str(self.CustInfo[0]) ,addr_no="1" ,shipto_cust_sid=str(self.CustInfo[0]),
                          shipto_addr_no="1" ,station="" ,workstation="1" ,orig_store_no=str(self.t_store_no) ,orig_station="" ,use_vat="1" ,vat_options="0" ,so_no="" ,so_sid="" ,cust_po_no="" ,note="",
                          disc_perc="" ,disc_amt="" ,disc_perc_spread="" ,over_tax_perc="" ,over_tax_perc2="" ,tax_reb_perc="" ,tax_reb_amt="" ,rounding_offset="" ,
