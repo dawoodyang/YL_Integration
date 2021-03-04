@@ -53,6 +53,7 @@ class webservice:
     databaseuser = ConfigJson['databaseuser']
     databasepwd  = ConfigJson['databasepwd']
     exportpath   = ConfigJson['exportpath']
+    hours        = int(ConfigJson['hours'])
     #-------- Get Config --------------------------
 
     dns = cx.makedsn(databasehost, '1521', 'rproods')  # setup Oracle info
@@ -73,22 +74,30 @@ class webservice:
 # [Class Setup info]---------------------------------------------------------------------------------------------------[-]
 
 
-    def __init__(self, p_platform_num, p_startDateTime, p_endDateTime):
+    def __init__(self, p_platform_num):
         print('--------   Main Object   --------')
+        #-------   Set 1小时前的时间   ------------------------------------>
+        
+        startTime = time.time() - self.hours*60*60
+        startTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(startTime))
+        #-----------------------------------------------------------------<
+
+        endTime   = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
         self.t_platform_num = p_platform_num
 
         self.t_startDateStamp = str(
-            int(time.mktime(time.strptime(p_startDateTime, "%Y-%m-%d %H:%M:%S"))))
+            int(time.mktime(time.strptime(startTime, "%Y-%m-%d %H:%M:%S"))))
         self.t_EndDateStamp = str(
-            int(time.mktime(time.strptime(p_endDateTime, "%Y-%m-%d %H:%M:%S"))))
-        self.t_startDate = p_startDateTime
-        self.t_endDate = p_endDateTime
+            int(time.mktime(time.strptime(endTime, "%Y-%m-%d %H:%M:%S"))))
+        self.t_startDate = startTime
+        self.t_endDate = endTime
         print('Set platform    = '+self.t_platform_num)
-
         print('Start TimeStamp = '+self.t_startDateStamp)
         print('End TimeStamp   = '+self.t_EndDateStamp)
         print('Start Date      = '+self.t_startDate)
         print('End Date        = '+self.t_endDate)
+        print('Between(hours)  = '+str(self.hours))
        
 
 # ---[Oracle]--------------------------------------------------------[Check Part]------------------------------------------[+]
@@ -468,8 +477,9 @@ class webservice:
         #  print('ERROR:--->TimeOut 15 ')
         #  print(get_respons.text)
 
-
+        # 输出EXE pyinstaller -F api.py
 # -----Run Main ----------------
 
-API = webservice('101661', '2021-02-06 00:00:00', '2021-02-28 23:59:59')
+
+API = webservice('101661')
 API.getorder()

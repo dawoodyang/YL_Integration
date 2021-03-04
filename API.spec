@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['Api.py'],
+a = Analysis(['API.py'],
              pathex=['E:\\Dep_Object\\YL_Integration'],
              binaries=[],
              datas=[],
@@ -23,7 +23,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='Api',
+          name='API',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

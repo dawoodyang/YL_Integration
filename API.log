@@ -152,3 +152,28 @@
 2021-03-04 15:00:35,755 - INFO - 21-03-04 15:00:35  |Note|-------->   Document already exist (1671018161815121811, '1216292558755')
 2021-03-04 15:00:36,044 - INFO - 21-03-04 15:00:36  |Note|-------->   Document already exist (1671018161815121811, '1216292558755')
 2021-03-04 15:00:36,134 - INFO - 21-03-04 15:00:36  |Note|-------->[After check,no document create]
+2021-03-04 15:58:06,187 - INFO - -                                                               -
+2021-03-04 15:58:06,187 - INFO - API Program Start Datetime:     [  21-03-04 15:58:06  ]
+2021-03-04 15:58:06,569 - INFO - 21-03-04 15:58:06  |Note|-------->[After check,no document create]
+2021-03-04 16:00:21,264 - INFO - -                                                               -
+2021-03-04 16:00:21,264 - INFO - API Program Start Datetime:     [  21-03-04 16:00:21  ]
+2021-03-04 16:00:21,646 - INFO - 21-03-04 16:00:21  |Note|-------->[After check,no document create]
+2021-03-04 16:02:02,890 - INFO - -                                                               -
+2021-03-04 16:02:02,890 - INFO - API Program Start Datetime:     [  21-03-04 16:02:02  ]
+2021-03-04 16:02:03,226 - INFO - 21-03-04 16:02:03  |Note|-------->[After check,no document create]
+2021-03-04 16:03:39,467 - INFO - -                                                               -
+2021-03-04 16:03:39,467 - INFO - API Program Start Datetime:     [  21-03-04 16:03:39  ]
+2021-03-04 16:03:40,162 - INFO - 21-03-04 16:03:40  |Note|-------->[Create  XML Document]
+2021-03-04 16:03:40,162 - INFO - Create Document Tree
+2021-03-04 16:03:40,443 - INFO - Create INVCOICES Tree 
+2021-03-04 16:03:40,558 - INFO - Format XML
+2021-03-04 16:03:40,558 - INFO - Create XML File Tree
+2021-03-04 16:03:40,561 - INFO - Write XML FilE
+2021-03-04 16:04:04,114 - INFO - -                                                               -
+2021-03-04 16:04:04,114 - INFO - API Program Start Datetime:     [  21-03-04 16:04:04  ]
+2021-03-04 16:04:04,753 - INFO - 21-03-04 16:04:04  |Note|-------->[Create  XML Document]
+2021-03-04 16:04:04,753 - INFO - Create Document Tree
+2021-03-04 16:04:05,031 - INFO - Create INVCOICES Tree 
+2021-03-04 16:04:05,148 - INFO - Format XML
+2021-03-04 16:04:05,148 - INFO - Create XML File Tree
+2021-03-04 16:04:05,152 - INFO - Write XML FilE
