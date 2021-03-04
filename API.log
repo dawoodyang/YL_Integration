@@ -33,3 +33,122 @@
 2021-03-04 12:12:22,888 - INFO - 21-03-04 12:12:22  |Note|-------->   Document already exist (160007131217181116, '1216292558541')
 2021-03-04 12:12:23,082 - INFO - 21-03-04 12:12:23  |Note|-------->   Document already exist (160007171516171614, '1216292558544')
 2021-03-04 12:12:23,175 - INFO - 21-03-04 12:12:23  |Note|-------->[After check,no document create]
+2021-03-04 14:13:39,931 - INFO - -                                                               -
+2021-03-04 14:13:39,948 - INFO - API Program Start Datetime:     [  21-03-04 14:13:39  ]
+2021-03-04 14:13:40,357 - INFO - 21-03-04 14:13:40  |Note|-------->[After check,no document create]
+2021-03-04 14:13:58,412 - INFO - -                                                               -
+2021-03-04 14:13:58,413 - INFO - API Program Start Datetime:     [  21-03-04 14:13:58  ]
+2021-03-04 14:13:58,868 - INFO - 21-03-04 14:13:58  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:13:59,312 - INFO - 21-03-04 14:13:59  |Error|-------->[Item Not Found]  Document No:1216292558762   Barcode:2900000061873
+2021-03-04 14:13:59,430 - INFO - 21-03-04 14:13:59  |Error|-------->[Item Not Found]  Document No:1216292558762   Barcode:2900000061880
+2021-03-04 14:13:59,550 - INFO - 21-03-04 14:13:59  |Error|-------->[Item Not Found]  Document No:1216292558762   Barcode:2900000061903
+2021-03-04 14:13:59,854 - INFO - 21-03-04 14:13:59  |Error|-------->[Item Not Found]  Document No:1216292558770   Barcode:2900000061873
+2021-03-04 14:13:59,959 - INFO - 21-03-04 14:13:59  |Error|-------->[Item Not Found]  Document No:1216292558770   Barcode:2900000061903
+2021-03-04 14:14:00,271 - INFO - 21-03-04 14:14:00  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:00,378 - INFO - 21-03-04 14:14:00  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:00,484 - INFO - 21-03-04 14:14:00  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:00,588 - INFO - 21-03-04 14:14:00  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:00,883 - INFO - 21-03-04 14:14:00  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:00,988 - INFO - 21-03-04 14:14:00  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:01,094 - INFO - 21-03-04 14:14:01  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:01,202 - INFO - 21-03-04 14:14:01  |Error|-------->[Item Not Found]  Document No:1216292558755   Barcode:2900000061897
+2021-03-04 14:14:01,203 - INFO - 21-03-04 14:14:01  |Note|-------->[After check,no document create]
+2021-03-04 14:21:47,426 - INFO - -                                                               -
+2021-03-04 14:21:47,426 - INFO - API Program Start Datetime:     [  21-03-04 14:21:47  ]
+2021-03-04 14:21:47,895 - INFO - 21-03-04 14:21:47  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:21:50,615 - INFO - 21-03-04 14:21:50  |Note|-------->[After check,no document create]
+2021-03-04 14:24:54,203 - INFO - -                                                               -
+2021-03-04 14:24:54,204 - INFO - API Program Start Datetime:     [  21-03-04 14:24:54  ]
+2021-03-04 14:24:54,642 - INFO - 21-03-04 14:24:54  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:24:57,022 - INFO - 21-03-04 14:24:57  |Note|-------->[Create  XML Document]
+2021-03-04 14:24:57,022 - INFO - Create Document Tree
+2021-03-04 14:24:57,115 - INFO - Format XML
+2021-03-04 14:24:57,115 - INFO - Create XML File Tree
+2021-03-04 14:24:57,119 - INFO - Write XML FilE
+2021-03-04 14:24:57,304 - INFO - Create INVCOICES Tree 
+2021-03-04 14:24:57,632 - INFO - Format XML
+2021-03-04 14:24:57,632 - INFO - Create XML File Tree
+2021-03-04 14:24:57,635 - INFO - Write XML FilE
+2021-03-04 14:24:57,818 - INFO - Create INVCOICES Tree 
+2021-03-04 14:24:58,047 - INFO - Format XML
+2021-03-04 14:24:58,048 - INFO - Create XML File Tree
+2021-03-04 14:24:58,054 - INFO - Write XML FilE
+2021-03-04 14:24:58,236 - INFO - Create INVCOICES Tree 
+2021-03-04 14:24:58,668 - INFO - Format XML
+2021-03-04 14:24:58,668 - INFO - Create XML File Tree
+2021-03-04 14:24:58,674 - INFO - Write XML FilE
+2021-03-04 14:24:58,860 - INFO - Create INVCOICES Tree 
+2021-03-04 14:24:59,298 - INFO - Format XML
+2021-03-04 14:24:59,298 - INFO - Create XML File Tree
+2021-03-04 14:24:59,306 - INFO - Write XML FilE
+2021-03-04 14:26:56,539 - INFO - -                                                               -
+2021-03-04 14:26:56,540 - INFO - API Program Start Datetime:     [  21-03-04 14:26:56  ]
+2021-03-04 14:26:57,007 - INFO - 21-03-04 14:26:57  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:26:59,528 - INFO - 21-03-04 14:26:59  |Note|-------->[Create  XML Document]
+2021-03-04 14:26:59,528 - INFO - Create Document Tree
+2021-03-04 14:26:59,623 - INFO - Format XML
+2021-03-04 14:26:59,623 - INFO - Create XML File Tree
+2021-03-04 14:26:59,625 - INFO - Write XML FilE
+2021-03-04 14:26:59,813 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:00,140 - INFO - Format XML
+2021-03-04 14:27:00,140 - INFO - Create XML File Tree
+2021-03-04 14:27:00,144 - INFO - Write XML FilE
+2021-03-04 14:27:00,335 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:00,556 - INFO - Format XML
+2021-03-04 14:27:00,556 - INFO - Create XML File Tree
+2021-03-04 14:27:00,560 - INFO - Write XML FilE
+2021-03-04 14:27:00,746 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:01,181 - INFO - Format XML
+2021-03-04 14:27:01,182 - INFO - Create XML File Tree
+2021-03-04 14:27:01,202 - INFO - Write XML FilE
+2021-03-04 14:27:01,385 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:01,826 - INFO - Format XML
+2021-03-04 14:27:01,826 - INFO - Create XML File Tree
+2021-03-04 14:27:01,836 - INFO - Write XML FilE
+2021-03-04 14:27:45,976 - INFO - -                                                               -
+2021-03-04 14:27:45,977 - INFO - API Program Start Datetime:     [  21-03-04 14:27:45  ]
+2021-03-04 14:27:46,427 - INFO - 21-03-04 14:27:46  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:27:48,797 - INFO - 21-03-04 14:27:48  |Note|-------->[Create  XML Document]
+2021-03-04 14:27:48,797 - INFO - Create Document Tree
+2021-03-04 14:27:49,079 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:49,597 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:49,997 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:50,623 - INFO - Create INVCOICES Tree 
+2021-03-04 14:27:51,072 - INFO - Format XML
+2021-03-04 14:27:51,073 - INFO - Create XML File Tree
+2021-03-04 14:27:51,084 - INFO - Write XML FilE
+2021-03-04 14:32:19,819 - INFO - -                                                               -
+2021-03-04 14:32:19,820 - INFO - API Program Start Datetime:     [  21-03-04 14:32:19  ]
+2021-03-04 14:32:20,294 - INFO - 21-03-04 14:32:20  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:32:22,797 - INFO - 21-03-04 14:32:22  |Note|-------->[Create  XML Document]
+2021-03-04 14:32:22,797 - INFO - Create Document Tree
+2021-03-04 14:32:23,070 - INFO - Create INVCOICES Tree 
+2021-03-04 14:32:23,580 - INFO - Create INVCOICES Tree 
+2021-03-04 14:32:23,984 - INFO - Create INVCOICES Tree 
+2021-03-04 14:32:24,599 - INFO - Create INVCOICES Tree 
+2021-03-04 14:32:25,031 - INFO - Format XML
+2021-03-04 14:32:25,032 - INFO - Create XML File Tree
+2021-03-04 14:32:25,056 - INFO - Write XML FilE
+2021-03-04 14:44:01,996 - INFO - -                                                               -
+2021-03-04 14:44:01,996 - INFO - API Program Start Datetime:     [  21-03-04 14:44:01  ]
+2021-03-04 14:44:02,477 - INFO - 21-03-04 14:44:02  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:44:12,283 - INFO - -                                                               -
+2021-03-04 14:44:12,283 - INFO - API Program Start Datetime:     [  21-03-04 14:44:12  ]
+2021-03-04 14:44:12,756 - INFO - 21-03-04 14:44:12  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 14:44:15,107 - INFO - 21-03-04 14:44:15  |Note|-------->[Create  XML Document]
+2021-03-04 14:44:15,107 - INFO - Create Document Tree
+2021-03-04 14:44:15,385 - INFO - Create INVCOICES Tree 
+2021-03-04 14:44:15,894 - INFO - Create INVCOICES Tree 
+2021-03-04 14:44:16,293 - INFO - Create INVCOICES Tree 
+2021-03-04 14:44:16,917 - INFO - Create INVCOICES Tree 
+2021-03-04 14:44:17,355 - INFO - Format XML
+2021-03-04 14:44:17,355 - INFO - Create XML File Tree
+2021-03-04 14:44:17,368 - INFO - Write XML FilE
+2021-03-04 15:00:34,614 - INFO - -                                                               -
+2021-03-04 15:00:34,614 - INFO - API Program Start Datetime:     [  21-03-04 15:00:34  ]
+2021-03-04 15:00:35,095 - INFO - 21-03-04 15:00:35  |Note|-------->   Document already exist (160007181717171415, '1216292558537')
+2021-03-04 15:00:35,285 - INFO - 21-03-04 15:00:35  |Note|-------->   Document already exist (1671511161614131018, '1216292558762')
+2021-03-04 15:00:35,468 - INFO - 21-03-04 15:00:35  |Note|-------->   Document already exist (1671313131517131114, '1216292558770')
+2021-03-04 15:00:35,755 - INFO - 21-03-04 15:00:35  |Note|-------->   Document already exist (1671018161815121811, '1216292558755')
+2021-03-04 15:00:36,044 - INFO - 21-03-04 15:00:36  |Note|-------->   Document already exist (1671018161815121811, '1216292558755')
+2021-03-04 15:00:36,134 - INFO - 21-03-04 15:00:36  |Note|-------->[After check,no document create]

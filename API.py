@@ -41,6 +41,7 @@ class webservice:
     CustInfo = []
     ItemInfo = []
     ConfigJson = []
+    load_f =''
     #-------- Get Config --------------------------
     with open("api.config",'r') as load_f:
          ConfigJson = json.load(load_f)
@@ -207,6 +208,11 @@ class webservice:
             queue[0:0] = children  # prepend so children come before siblings
 
 # [XML Format]--------------------------------------------------------------------------[-]
+    
+    def runCommand(self):
+        strcommand = 'D:\ECM\ECMProc.exe -in -a'
+        execommand = os.system(strcommand)
+        print(execommand)
 
     def gettoken(self):
         get_respons = requests.get(self.url_token+self.t_platform_num)
@@ -314,9 +320,6 @@ class webservice:
                         str_checkitem = self.itemCheck(docDetail['barCode'])
                         if str_checkitem != None:
                             if self.test_type == 'test':  # ----test-------
-                                # ----test-------
-                                print('Item Sid:'+str(str_checkitem[1]))
-                                # ----test-------
                                 print('List[3]:'+str(str_checkitem[3]))
                         else:
                             print('  |Error|-------->[Item Not Found]  Document No:' +
@@ -329,9 +332,7 @@ class webservice:
                        # ------- Check if document not error then insert to created list -------[+]
                     if documentError == 0:
                         self.CreateDOCList.append(docList['dealCode'])
-                        if self.test_type == 'test':
-                            # ----test-------
-                            print(docList['dealCode']+' will Created')
+                        print(docList['dealCode']+' will Created')
                        # -----------------------------------------------------------------------[-]
 
         # -------Loop List -----------------------(-)
@@ -343,7 +344,7 @@ class webservice:
         
 # ---------[     Create XML part       ]----------------------------------------------------------------------------------------------------------------------------------------[+]
         #if str(JsonStr['success']) == 'True' and JsonStr['content']['result']['pageCond']['count']>= 1:
-        if len(self.CreateDOCList)>=0 :
+        if len(self.CreateDOCList)<=0 :
             logging.info(self.getCurrDatetime() +
                          '  |Note|-------->[After check,no document create]')  # Append Log            
         else:
@@ -361,8 +362,7 @@ class webservice:
                     #----------------------------------Document Loop ------------------------------------------------------------------------------------------------>>
                     print(docList['dealCode']+'    :'+'Go to Created XML')
                     getsidstr = self.getsid()  # ---------    Get INVC_SID
-                    if self.test_type == 'test':
-                        print('Get Invoice SID:'+getsidstr)
+                    print('Get Invoice SID:'+getsidstr)
                     self.CustInfo = self.customer_check(str(docList['buyerId'])) # get customer info
 
                     if docList['saleFlag']=='0':
@@ -444,19 +444,25 @@ class webservice:
                     #----------------end of invoice ---------------------
                     self.t_invc_no= self.t_invc_no+1
                     #--------------------------------------------------Document loop end---------------------------------------------------------------------------<<
-                logging.info("Format XML")
-                self.prettify(xml_doc)
+            logging.info("Format XML")
+            self.prettify(xml_doc)
 
-                tree = ET.ElementTree(xml_doc)
-                logging.info("Create XML File Tree")
-                tree.write('.\\xml\\'+str(time.strftime('%y%m%d%H%M%S'))+'INVC''.xml',encoding='UTF-8',xml_declaration=True)
-                tree.write(self.exportpath+'invoice002.xml',encoding='UTF-8',xml_declaration=True)
-                logging.info("Write XML FilE")
+            tree = ET.ElementTree(xml_doc)
+            logging.info("Create XML File Tree")
+            tree.write('.\\xml\\'+str(time.strftime('%y%m%d%H%M%S'))+'INVC''.xml',encoding='UTF-8',xml_declaration=True)
+            tree.write(self.exportpath+'invoice002.xml',encoding='UTF-8',xml_declaration=True)
+            logging.info("Write XML FilE")
+            if self.test_type == 'live':
+               logging.info("Run ECM IN") 
+               print('After Export XML files ,execute ECM In command')
+               self.runCommand()
+           
 
 # ---------[     Create XML part       ]----------------------------------------------------------------------------------------------------------------------------------------[-]
 
         self.cur.close
         self.connection.close
+
 
         # except BaseException:
         #  print('ERROR:--->TimeOut 15 ')
@@ -465,5 +471,5 @@ class webservice:
 
 # -----Run Main ----------------
 
-API = webservice('101661', '2021-02-04 00:00:00', '2021-02-04 23:59:59')
+API = webservice('101661', '2021-02-06 00:00:00', '2021-02-28 23:59:59')
 API.getorder()
