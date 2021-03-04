@@ -1,2 +1,21 @@
 1.安装目录包含文件及文件夹
   [log]   [XML]    api.config  API.exe
+2. 
+api.config
+
+                 为live时才会自动运行导入
+	"test_type": "test"  
+                 接口token获取地址
+	"url_token": "http://testpicksys.retailo2o.com/erpExternal/api/comm/getToken.do?_platform_num=",    
+                 接口订单获取地址
+	"url_getorder": "http://testpicksys.retailo2o.com/picksysdi/api/orderOperate/getPageRetailProInfo.do",
+                 基本数据库IP 默认可以设为 127.0.0.1
+	"databasehost":"192.168.10.27",
+                 数据库用户
+	"databaseuser":"reportuser",
+                 数据库密码
+	"databasepwd":"report",
+                 ECM输入路径
+	"exportpath":"D:\\ECM\\Polling\\001001A\\in\\RECVD\\",
+                 多少小时运行一次
+	"hours":"100"	

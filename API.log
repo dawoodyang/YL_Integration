@@ -177,3 +177,7 @@
 2021-03-04 16:04:05,148 - INFO - Format XML
 2021-03-04 16:04:05,148 - INFO - Create XML File Tree
 2021-03-04 16:04:05,152 - INFO - Write XML FilE
+2021-03-04 16:22:34,035 - INFO - -                                                               -
+2021-03-04 16:22:34,035 - INFO - API Program Start Datetime:     [  21-03-04 16:22:34  ]
+2021-03-04 16:22:34,464 - INFO - 21-03-04 16:22:34  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
+2021-03-04 16:22:34,557 - INFO - 21-03-04 16:22:34  |Note|-------->[After check,no document create]
