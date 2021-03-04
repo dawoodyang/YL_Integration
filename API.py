@@ -54,6 +54,8 @@ class webservice:
     databasepwd  = ConfigJson['databasepwd']
     exportpath   = ConfigJson['exportpath']
     hours        = int(ConfigJson['hours'])
+    t_platform_num = ConfigJson['platform_num']
+
     #-------- Get Config --------------------------
 
     dns = cx.makedsn(databasehost, '1521', 'rproods')  # setup Oracle info
@@ -74,7 +76,7 @@ class webservice:
 # [Class Setup info]---------------------------------------------------------------------------------------------------[-]
 
 
-    def __init__(self, p_platform_num):
+    def __init__(self):
         print('--------   Main Object   --------')
         #-------   Set 1小时前的时间   ------------------------------------>
         
@@ -84,7 +86,7 @@ class webservice:
 
         endTime   = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        self.t_platform_num = p_platform_num
+        
 
         self.t_startDateStamp = str(
             int(time.mktime(time.strptime(startTime, "%Y-%m-%d %H:%M:%S"))))
@@ -481,5 +483,5 @@ class webservice:
 # -----Run Main ----------------
 
 
-API = webservice('101661')
+API = webservice()
 API.getorder()

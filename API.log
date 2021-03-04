@@ -181,3 +181,9 @@
 2021-03-04 16:22:34,035 - INFO - API Program Start Datetime:     [  21-03-04 16:22:34  ]
 2021-03-04 16:22:34,464 - INFO - 21-03-04 16:22:34  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
 2021-03-04 16:22:34,557 - INFO - 21-03-04 16:22:34  |Note|-------->[After check,no document create]
+2021-03-04 16:36:56,215 - INFO - -                                                               -
+2021-03-04 16:36:56,216 - INFO - API Program Start Datetime:     [  21-03-04 16:36:56  ]
+2021-03-04 16:37:15,085 - INFO - -                                                               -
+2021-03-04 16:37:15,085 - INFO - API Program Start Datetime:     [  21-03-04 16:37:15  ]
+2021-03-04 16:37:15,582 - INFO - 21-03-04 16:37:15  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
+2021-03-04 16:37:15,677 - INFO - 21-03-04 16:37:15  |Note|-------->[After check,no document create]
