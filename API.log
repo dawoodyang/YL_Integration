@@ -187,3 +187,21 @@
 2021-03-04 16:37:15,085 - INFO - API Program Start Datetime:     [  21-03-04 16:37:15  ]
 2021-03-04 16:37:15,582 - INFO - 21-03-04 16:37:15  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
 2021-03-04 16:37:15,677 - INFO - 21-03-04 16:37:15  |Note|-------->[After check,no document create]
+2021-03-05 15:32:34,975 - INFO - -                                                               -
+2021-03-05 15:32:35,024 - INFO - API Program Start Datetime:     [  21-03-05 15:32:35  ]
+2021-03-05 15:32:36,443 - INFO - 21-03-05 15:32:36  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
+2021-03-05 15:32:36,541 - INFO - 21-03-05 15:32:36  |Note|-------->[After check,no document create]
+2021-03-05 15:33:37,114 - INFO - -                                                               -
+2021-03-05 15:33:37,114 - INFO - API Program Start Datetime:     [  21-03-05 15:33:37  ]
+2021-03-05 15:33:52,876 - INFO - -                                                               -
+2021-03-05 15:33:52,877 - INFO - API Program Start Datetime:     [  21-03-05 15:33:52  ]
+2021-03-05 15:33:53,311 - INFO - 21-03-05 15:33:53  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
+2021-03-05 15:33:53,406 - INFO - 21-03-05 15:33:53  |Note|-------->[After check,no document create]
+2021-03-05 15:34:45,459 - INFO - -                                                               -
+2021-03-05 15:34:45,459 - INFO - API Program Start Datetime:     [  21-03-05 15:34:45  ]
+2021-03-05 15:34:45,863 - INFO - 21-03-05 15:34:45  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')
+2021-03-05 15:34:45,956 - INFO - 21-03-05 15:34:45  |Note|-------->[After check,no document create]
+2021-03-05 15:36:01,192 - INFO - -                                                               -
+2021-03-05 15:36:01,192 - INFO - API Program Start Datetime:     [  21-03-05 15:36:01  ]
+2021-03-05 15:36:01,659 - INFO - 21-03-05 15:36:01  |Note|-------->   Document already exist (1671814141010121811, '1216292559542')  CreatedDate:2021-03-02T17:28:18
+2021-03-05 15:36:01,753 - INFO - 21-03-05 15:36:01  |Note|-------->[After check,no document create]

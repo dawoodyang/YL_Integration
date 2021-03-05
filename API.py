@@ -296,7 +296,7 @@ class webservice:
                 # ------------------------Header-------------------------[+]
                 print('------------------ Header ---------------------')
                 # print(docList)
-                print('[Header]-------->  DocumentNo:'+docList['dealCode']+'   Date:'+str(docList['createTime'])+'  SaleFlag:'+str(docList['saleFlag']
+                print('[Header]-------->  DocumentNo:'+docList['dealCode']+'   Date:'+self.TimeStampToDateTime(str(docList['createTime']),'Create')+'  SaleFlag:'+str(docList['saleFlag']
 
                                                                                                                                    )+'  RecvName:'+docList['recvName']+'  BuyerId:'+str(docList['buyerId'])+' TotalPayment:'+str(docList['dealTotalFee']))
                 # ---------------   Check Invoice ------------------------------------
@@ -307,7 +307,7 @@ class webservice:
                     documentError = 1
                     print('Document already exist '+str(str_checkinvc))
                     logging.info(self.getCurrDatetime(
-                    )+'  |Note|-------->   Document already exist '+str(str_checkinvc))  # Append Log
+                    )+'  |Note|-------->   Document already exist '+str(str_checkinvc)+'  CreatedDate:'+self.TimeStampToDateTime(str(docList['createTime']),'Create'))  # Append Log
 
                 # ---------------   Check Customer ------------------------------------
                 str_checkcust = self.customer_check(str(docList['buyerId']))
